@@ -1,0 +1,31 @@
+services:
+  db:
+    image: mysql:8.0.11
+    environment:
+      MYSQL_DATABASE: social_network_db
+      MYSQL_ROOT_PASSWORD: Muneer@786
+    ports:
+      - "3307:3306"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    command: gunicorn social_network.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE=mysql
+      - SQL_HOST=db
+      - SQL_PORT=3306
+      - MYSQL_DATABASE=social_network_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Muneer@786
