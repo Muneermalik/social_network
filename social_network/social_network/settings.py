@@ -63,7 +63,7 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 50,  # Temporarily increase to show more users
+    'PAGE_SIZE': 10,  # Temporarily increase to show more users
 }
 
 
@@ -75,8 +75,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
 }
-
-
 
 
 
@@ -112,50 +110,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_network.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'social_network_db',
-#         'USER': 'root',
-#         'PASSWORD': 'Muneer@786',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/1',  # Adjust to your Redis setup
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
-
 import os
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.getenv('MYSQL_DATABASE', 'social_network_db'),  # Default to 'social_network_db' if env variable is missing
-#         'USER': os.getenv('MYSQL_USER', 'root'),
-#         'PASSWORD': os.getenv('MYSQL_PASSWORD', 'Muneer@786'),
-#         'HOST': os.getenv('SQL_HOST', 'db'),  # 'localhost' for local, 'db' for Docker
-#         'PORT': os.getenv('SQL_PORT', '3306'),
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -179,17 +134,6 @@ CACHES = {
         }
     }
 }
-
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1'),  # Use 'redis' inside Docker, 'localhost' otherwise
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
 
 
 

@@ -1,8 +1,7 @@
 # to handle user signup and login.
 from django.contrib.auth.models import User
 from rest_framework import serializers
-
-from .models import FriendRequest, Block
+from .models import UserActivity,FriendRequest, Block
 
 class UserSignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -25,7 +24,7 @@ class UserLoginSerializer(serializers.Serializer):
 
 
 
-# to include a serializer for user search:
+#  serializer for user search:
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,9 +53,7 @@ class BlockSerializer(serializers.ModelSerializer):
         read_only_fields = ['blocker', 'timestamp']
 
 
-# to Add Serializer for UserActivity
-from .models import UserActivity
-
+# Serializer for UserActivity
 class UserActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserActivity

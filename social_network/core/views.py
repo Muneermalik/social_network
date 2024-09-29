@@ -1,8 +1,5 @@
 from django.shortcuts import render
 
-# to handle user signup and login using DRF.
-
-# core/views.py
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework import generics, status
@@ -17,11 +14,11 @@ class UserSignupView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSignupSerializer
 
-    permission_classes = [AllowAny]  # This allows anyone to access the signup endpoint
+    permission_classes = [AllowAny]   
 
 class UserLoginView(APIView):
 
-    permission_classes = [AllowAny]  # This allows anyone to access the login endpoint
+    permission_classes = [AllowAny]  
 
     def post(self, request):
         serializer = UserLoginSerializer(data=request.data)
@@ -42,8 +39,6 @@ class UserLoginView(APIView):
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
-
-# to Create the User Search View:
 
 from django.contrib.auth.models import User
 from rest_framework import generics
@@ -69,8 +64,6 @@ class UserSearchView(generics.ListAPIView):
         return super().get_queryset()
 
 
-
-# views for sending, accepting, rejecting, and blocking users.
 
 from django.contrib.auth.models import User
 from rest_framework import generics, status
@@ -124,8 +117,6 @@ class BlockUserView(generics.CreateAPIView):
 
 
 
-
-# to Add Views for Friends List and Pending Friend Requests
 
 from django.contrib.auth.models import User
 from rest_framework import generics, permissions
